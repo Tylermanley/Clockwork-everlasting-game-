@@ -276,5 +276,11 @@ function renderSettings() {
         </div>
         <p class="muted small">Saves live in this browser. Export a file to back up your grove or move it to another device.</p>
       </section>
+      <section class="panel">
+        <h3>💎 Store</h3>
+        <p class="small">${PAYMENTS.mode === 'live' && PAYMENTS.checkoutEndpoint ? '🟢 Live payments are connected.' : '🧪 Test mode: boutique purchases are free and only for testing.'}</p>
+        <p class="muted small">The boutique only sells cosmetics: outfits, decorations and card frames. They never change gameplay.</p>
+        ${Object.keys(S.owned).length && !(PAYMENTS.mode === 'live' && PAYMENTS.checkoutEndpoint) ? '<button class="btn small" onclick="resetTestPurchases()">Reset test purchases</button>' : ''}
+      </section>
     </div>`;
 }

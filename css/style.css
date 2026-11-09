@@ -803,3 +803,18 @@ body.cb .bar.boss-hp .fill { background: repeating-linear-gradient(45deg, #e07b0
 /* Reduced motion */
 body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after { animation: none !important; transition: none !important; }
 body.reduce-motion .screen-flash, body.reduce-motion .impact-flash { display: none; }
+
+/* ============================================================
+   Clockwork Boutique (cosmetics)
+   ============================================================ */
+.boutique { margin-bottom: 14px; border-color: #c58cff; background: linear-gradient(#fffaf0, #f6eeff); }
+.test-banner { background: #fff4cc; border: 2px dashed #e3a91f; border-radius: 10px; padding: 6px 10px; font-size: .85rem; }
+.bq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.bq-item { background: #fff; border: 2px solid var(--line); border-radius: 14px; padding: 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; font-size: .85rem; }
+.bq-item.owned { border-color: #c58cff; box-shadow: 0 0 0 2px #ead7ff; }
+.bq-item.pack { grid-column: 1 / -1; background: linear-gradient(135deg, #fff0f6, #f3e6ff); }
+.bq-item small { color: var(--muted); }
+.bq-face { width: 96px; border-radius: 12px; overflow: hidden; background: radial-gradient(circle, #fff, #efe3ff); }
+body.frame-gold .card { border-color: #d4a017 !important; box-shadow: 0 0 0 2px #ffe08a, 0 0 12px rgba(255, 200, 60, .55), 0 4px 0 rgba(0,0,0,.25); }
+body.frame-gold .card .card-cost { background: radial-gradient(circle at 35% 30%, #fffbe0, #ffd34d 55%, #b8860b); }
+body.frame-sakura .card { border-color: #f08ab0 !important; background-image: radial-gradient(circle at 90% 10%, rgba(255, 182, 210, .55) 0 12%, transparent 13%), radial-gradient(circle at 12% 88%, rgba(255, 182, 210, .45) 0 10%, transparent 11%); }

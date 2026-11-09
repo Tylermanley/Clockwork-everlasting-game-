@@ -278,7 +278,7 @@ function portraitSVG(id, expr, opts = {}) {
   const p = charParts(id, st);
   const vb = opts.crop === 'head' ? '48 22 104 118' : opts.crop === 'bust' ? '20 10 160 230' : '0 0 200 240';
   const emote = EMOTES[expr] ? `<span class="emote">${EMOTES[expr]}</span>` : '';
-  return `<div class="portrait expr-${expr} char-${id} ${opts.talking ? 'talking' : ''} ${opts.cls || ''}">
+  const html = `<div class="portrait expr-${expr} char-${id} ${opts.talking ? 'talking' : ''} ${opts.cls || ''}">
   <svg viewBox="${vb}" class="portrait-svg" aria-label="${id}">
     <g class="fig">
       <g class="tilt">${p.back}</g>
@@ -307,6 +307,12 @@ function portraitSVG(id, expr, opts = {}) {
   </svg>${emote}
   <span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span>
 </div>`;
+  if (opts.outfitPreview && typeof SHOP !== 'undefined' && SHOP[opts.outfitPreview]) {
+    let out = html;
+    for (const [a, b] of Object.entries(SHOP[opts.outfitPreview].colors)) out = out.split(a).join(b);
+    return out;
+  }
+  return typeof applyOutfit === 'function' ? applyOutfit(id, html) : html;
 }
 
 // ---------- Seasonal outfits ----------

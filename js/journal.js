@@ -45,7 +45,7 @@ function setTitle(t) { S.title = t || null; saveGame(); renderAll(); }
 
 function journalHtml() {
   const done = ACHIEVEMENTS.filter(a => S.achievements[a.id]);
-  const titles = done.filter(a => a.title).map(a => a.title);
+  const titles = done.filter(a => a.title).map(a => a.title).concat(owns('pack_supporter') ? [SUPPORTER_TITLE] : []);
   return `
     <section class="panel journal">
       <div class="journal-head">

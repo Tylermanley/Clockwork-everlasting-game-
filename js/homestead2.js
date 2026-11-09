@@ -138,6 +138,10 @@ const DECOR = {
   statue:   { name: 'Hero Statue',   emoji: '🗿', cost: 300, bonus: { def: 1 },       desc: '+1 DEF. Looks oddly like you.' },
   fountain: { name: 'Fountain',      emoji: '⛲', cost: 500, bonus: { sprinkler: 1 }, desc: 'Waters the 8 tiles around it each morning.' },
   path:     { name: 'Stone Path',    emoji: '🟫', cost: 15,  bonus: {},               desc: 'A tidy path between fields.' },
+  // Boutique decorations: purely cosmetic
+  sakura:     { name: 'Cherry Blossom Tree', emoji: '🌸', cost: 0, bonus: {}, premium: true, desc: 'Petals drift across your fields all year long.' },
+  clocktower: { name: 'Clockwork Tower',     emoji: '🕰️', cost: 0, bonus: {}, premium: true, desc: 'Its gears tick in time with history itself.' },
+  unicorn:    { name: 'Unicorn Statue',      emoji: '🦄', cost: 0, bonus: {}, premium: true, desc: 'A shimmering statue. Purely magnificent.' },
 };
 const EXPANSION_COST = [1500, 3000];
 
@@ -195,7 +199,7 @@ function carpenterHtml() {
       <div class="shop-row"><span>🪓 <b>Land Expansion</b><small>Adds a new row of 8 tiles (${n}/${EXPANSION_COST.length} bought).</small></span>
         ${n >= EXPANSION_COST.length ? '<span class="tag on">Max ✓</span>' : `<button class="btn small" ${S.coins < price(EXPANSION_COST[n]) ? 'disabled' : ''} onclick="buyExpansion()">🪙${price(EXPANSION_COST[n])}</button>`}</div>
       <h4>Decorations</h4>
-      ${Object.entries(DECOR).map(([id, d]) => `<div class="shop-row"><span>${d.emoji} <b>${d.name}</b><small>${d.desc} · in box ×${S.decor[id] || 0}</small></span><button class="btn small" ${S.coins < price(d.cost) ? 'disabled' : ''} onclick="buyDecor('${id}')">🪙${price(d.cost)}</button></div>`).join('')}
+      ${Object.entries(DECOR).filter(([, d]) => !d.premium).map(([id, d]) => `<div class="shop-row"><span>${d.emoji} <b>${d.name}</b><small>${d.desc} · in box ×${S.decor[id] || 0}</small></span><button class="btn small" ${S.coins < price(d.cost) ? 'disabled' : ''} onclick="buyDecor('${id}')">🪙${price(d.cost)}</button></div>`).join('')}
     </section>`;
 }
 

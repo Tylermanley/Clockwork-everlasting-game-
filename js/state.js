@@ -82,6 +82,11 @@ function newState() {
     quest: { jane: 0 },
     wedding: null,
     tutorial: { dismissed: false, done: {} },
+    // Cosmetic boutique
+    owned: {},
+    outfits: {},
+    cardFrame: null,
+    playerId: null,
   };
 }
 

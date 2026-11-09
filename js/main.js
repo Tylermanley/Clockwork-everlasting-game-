@@ -173,6 +173,7 @@ function renderMarket() {
   const anyMet = S.rel.anna.met || S.rel.cedric.met;
   view.innerHTML = `
     <h2 class="view-title">🛒 Village Market</h2>
+    ${boutiqueHtml()}
     ${mentorMet('quinn') && hearts('quinn') >= 2 ? '<p class="center muted">🏦 Minister Quinn\'s Patron\'s Discount: 10% off everything.</p>' : ''}
     <div class="market-grid">
       <section class="panel">
@@ -348,6 +349,8 @@ window.addEventListener('DOMContentLoaded', () => {
   S = loadGame();
   syncPlotSize();
   applySettings();
+  applyCardFrame();
+  handlePurchaseReturn();
   if (!S.requests.length) refreshRequests();
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
   if (S.day === 1 && !S.introSeen) applyMorningWater();
